@@ -1,9 +1,9 @@
 /* #region  Imports */
-import { FBXLoader } from './three/FBXLoader.js';
-import { FontLoader } from './three/FontLoader.js';
-import { TextGeometry } from './three/TextGeometry';
-import { GLTFLoader } from './three/GLTFLoader.js';
-import { FirstPersonControls } from './three/FirstPersonControls.js';
+import { FBXLoader } from './three.js-master/examples/jsm/loaders/FBXLoader.js';
+import { FontLoader } from './three.js-master/examples/jsm/loaders/FontLoader.js';
+import { TextGeometry } from './three.js-master/examples/jsm/geometries/TextGeometry.js';
+import { GLTFLoader } from './three.js-master/examples/jsm/loaders/GLTFLoader.js'
+import { FirstPersonControls } from './three.js-master/examples/jsm/controls/FirstPersonControls.js';
 import * as THREE from 'https://unpkg.com/three@0.144.0/build/three.module.js';
 import sunTexture from './images/sun.jpg';
 import mercuryTexture from './images/mercury.jpg';
@@ -16,7 +16,7 @@ import saturnTexture from './images/saturn.jpg';
 import saturnRingTexture from './images/saturnRing.jpg';
 import uranusTexture from './images/uranus.jpg';
 import neptuneTexture from './images/neptune.jpg';
-import { OrbitControls } from './three/OrbitControls.js'
+import { OrbitControls } from './three.js-master/examples/jsm/controls/OrbitControls.js'
 import { DoubleSide, TubeBufferGeometry } from 'three';
 /* #endregion */
 
