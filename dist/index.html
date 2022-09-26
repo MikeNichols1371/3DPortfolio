@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- #region  Head-->
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://kit.fontawesome.com/4cde9cf5f0.js" crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio Website</title>
+    <link rel="stylesheet" href="tailwind.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Vollkorn&display=swap" rel="stylesheet">
+  </head>
+  <!-- #endregion -->
+
+
+  <!-- #region Nav bar -->
+  <header class="resize-none rounded-md">
+    <a href="#home"><i class="fa-solid fa-laptop-code home-logo"></i></a>
+
+<nav class="center-links">
+    <a href="#about"  class="desktop">About Me</a>
+    <a href="#skills" class="desktop">Skills</a>
+    <a href="#projects" class="desktop">Projects</a>
+    <a href="#contact" class="desktop">Contact</a>
+</nav>
+<nav class="right">
+    <a href="" class="number-nav-right">
+        <i class='bx bxs-phone phone-icon'>  (716) 525-7313</i>
+    </a>
+</nav>
+</header>
+<!-- #endregion -->
+
+
+  <body>
+
+<!-- #region  Home section -->
+    <section id="home">
+      <div class="flex h-screen bg-black "> 
+        <div class="w-1/3 flex flex-col justify-center px-8">
+          <div class="home-content">
+            <h1 class="resize-none rounded-md" id="title">Mike Nichols Portfolio</h1>
+            <p>
+              <ul class="resize-none rounded-md" id="dynamic-text">
+                <li  class="text"><span></span></li>
+            </ul>
+            </p>
+            <p class="resize-none rounded-md" id="camera-orbit">click and drag mouse to orbit camera</p>
+            <div class="resize-none rounded-md" id="icon-links">
+              <a href="https://github.com/MikeNichols1371"><i  class="fa-brands fa-github github-icon"></i></a>
+              <a href="https://www.linkedin.com/in/mike-nichols-5b2a29246/"><i class="fa-brands fa-linkedin linked-in"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="w-2/3" id="home-canvas-container">
+          <canvas class="resize-none rounded-md" id="home-canvas">
+          </canvas>
+        </div>
+      </div>
+    </section>
+<!-- #endregion -->
+
+    <!-- #region About section -->
+      <section id="about">    
+            <div class="resize-none rounded-md" id="about-content">
+              <div>
+                <h1 class="resize-none rounded-md" id="about-title">About Me</h1>
+              </div>
+              <div>
+                <p class="resize-none rounded-md" id="about-info">
+                  Welcome to my Portfolio Website, my name is Mike Nichols! I'm a dedicated, hard working, quick learning professional, with great team working and communication skills.
+                  After recently transitioning from the Service Industry to pursue a career in Software Engineering, I could not be more estatic. As a TrueCoders graduate, I have sufficient knowledge
+                  of C#, JavaScript, SQL, HTML, and CSS. However this is not where my education stops. As a Developer, I plan to expand on my base of knowledge, by fine tuning my skills into 
+                  mastery and picking up new languages along the way to become the best I can be! Feel free to download my resume linked below, check out some of my completed projects in the
+                  project section of my page, or click the links to my Github and LinkedIn provided below aswell as in my contact section of my page. Also I would appreciate any feed back of what
+                  you like or did not like in order to help aid me along in my growth as a Developer.
+                  <br />
+                  <br />
+                  Location: Niagara Falls, NY <br />
+                  Email: mnich1371@icloud.com
+                  <br />
+                  <br />
+                  <a href="https://drive.google.com/file/d/11e1uhRAZ569TQtzfIsusBQNbiKX-aMX8/view"><button class="resume">Download Resume</button></a>
+                  <br />
+                  <br />
+              </p>
+              </div>
+            </div>
+      </section>
+    <!-- #endregion -->
+
+      <!-- #region  Skills section -->
+      <section id="skills">
+        <div class="flex h-screen bg-black"> 
+          <div class="resize-none rounded-md w-3/4" id="skills-canvas-container">
+            <canvas class="resize-none rounded-md" id="skills-canvas"></canvas>
+          </div>
+            <div class="resize-none rounded-md w-1/4 flex flex-col justify-center px-8" id="skills-text-canvas-container">
+                <canvas class="resize-none rounded-md" id="skills-text-canvas"></canvas>
+                  <!-- <h1 class="skills-title">Skills</h1> -->
+
+              </div>
+            </div>
+        </div>
+      </section>
+      <!-- #endregion -->
+
+      <!-- #region Projects section-->
+      <section id="projects">
+        <div class="flex h-screen bg-black"> 
+          <div class="resize-none rounded-md w-1/4 flex flex-col justify-center px-8" id="projects-text-canvas-container">
+              <canvas class="resize-none rounded-md" id="projects-text-canvas"></canvas>
+            </div>
+          <div class="resize-none rounded-md w-3/4" id="projects-canvas-container">
+            <canvas class="resize-none rounded-md" id="projects-canvas"></canvas>
+          </div>
+        </div>
+      </section>
+      <!-- #endregion -->
+
+      <!-- #region Contact section-->
+      <section id="contact">
+        <div class="contact-content" id="contact">
+          <div>
+              <h1 class="resize-none rounded-md" id="contact-title">Contact Me</h1>
+          </div>
+          <div class="row">
+                  <div class="column">
+                      <div class="resize-none rounded-md" id="column-title">Fill out this form to email me</div>
+                          <div class="form-body">
+                              <form action="https://formsubmit.co/mnich1371@icloud.com" method="POST">
+                                  <input class="resize-none rounded-md" type="text" id="fname" name="firstname" placeholder="Your name.." required> 
+                                  <input class="resize-none rounded-md" type="text" id="lname" name="lastname" placeholder="Your last name.." required>
+                                  <input class="resize-none rounded-md" type="text" id="email" name="email" placeholder="Your email.." required>
+                                  <textarea class="resize-none rounded-md" id="subject" name="subject" placeholder="Write something.." style="height:200px" required></textarea>
+                                  <br>
+                                  <br>
+                                  <input type="submit" value="Submit">
+                                </form>
+                          </div>
+                  </div>
+              
+              <div class="column">
+                  <div class="resize-none rounded-md" id="column-title">Contact Information</div>
+                  <div class="resize-none rounded-md" id="column-info">
+                      <p>I'd love to connect feel free to reach out I'm open to any and all feedback! Please follow my Github and connect with me on LinkedIn to keep up to date with my progress 
+                          as a Software Engineer.</p>
+                          <div class="items">
+                              <div class="item">
+                                  <span>
+                                      <a href=""><i class="fa-solid fa-envelope contact-icon"></i></a>
+                                      <div class="item-info">
+                                      <a>Email:</a>
+                                      <a>Mnich1371@icloud.com</a>
+                                      </div>
+                                  </span>
+                              </div>
+                                  <div class="item">
+                                      <span>
+                                          <a href=""><i class="fa-solid fa-mobile-retro contact-icon"></i></a>
+                                          <div class="item-info">
+                                          <a>Number: </a>    
+                                          <a>(716) 525-7313</a>
+                                          </div> 
+                                      </span>
+                                  </div>
+                                      <div class="item">
+                                          <span>
+                                              <a href=""><i class="fa-solid fa-map-location-dot contact-icon"></i></a>
+                                              <div class="item-info">
+                                                  <a>Location:</a>
+                                                  <a>Niagara Falls, NY</a>
+                                              </div>
+                                          </span>
+                                      </div>
+                              <div>
+                                  <br />
+                                  <br />
+                                  <p>Visit my Github and LinkedIn, let's get connected!</p>
+                                  <div class="icons">
+                                      <span>
+                                          <a href="https://github.com/MikeNichols1371"><i  class="fa-brands fa-github github-icon"></i></a>
+                                          <a href="https://www.linkedin.com/in/mike-nichols-5b2a29246/"><i class="fa-brands fa-linkedin linked-in"></i></a> 
+                                      </span>
+                                  </div>
+                              </div>
+                          </div>
+                  </div>
+              </div>
+          </div>
+      </section>
+      <!-- #endregion -->
+
+
+ <!-- #region  Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script async src="https://unpkg.com/es-module-shims@1.3.6/dist/es-module-shims.js"></script>
+    <script type="module" src="./dist/three/GLTFLoader.js" ></script>
+    <script type="module" src="index.js"></script>
+ <!-- #endregion -->
+
+  </body>
+</html>

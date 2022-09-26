@@ -1,0 +1,249 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+}
+section {
+  margin: 0;
+}
+
+/* #region  Nav bar  */
+header {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  padding: 5px 20px;
+  position: fixed;
+  z-index: 5;
+  width: 100%;
+}
+header .home-logo {
+  color: ghostwhite;
+  font-size: 45px;
+  padding-top: 2vh;
+  cursor: pointer;
+}
+header a {
+  color: ghostwhite;
+}
+header nav a {
+  text-decoration: none;
+  padding: 5px 10px;
+}
+header nav.center-links {
+  text-align: center;
+  font-size: 30px;
+  font-family: "Vollkorn", serif;
+  padding-left: 14vh;
+  padding-top: 2vh;
+}
+header nav.right {
+  padding-top: 2vh;
+}
+header .number-nav-right {
+  color: ghostwhite;
+  font-size: 22px;
+  font-family: "Vollkorn", serif;
+  text-decoration: none;
+}
+/* #endregion */
+
+/* #region  Links  */
+.resume-links {
+  padding-top: 2vh;
+}
+#icon-links {
+  text-align: center;
+  padding-top: 3vh;
+}
+.resume {
+  color: ghostwhite;
+  width: 250px;
+  height: 50px;
+  background-image: url("images/moon.jpg");
+  background-size: cover;
+  font-family: "Vollkorn", serif;
+  background-position: center center;
+  font-size: 25px;
+  border-radius: 15px;
+  cursor: pointer;
+}
+.github-icon {
+  font-size: 40px;
+  color: ghostwhite;
+}
+.linked-in {
+  font-size: 40px;
+  color: ghostwhite;
+}
+/* #endregion */
+
+/* #region  Home section  */
+.flex {
+  display: flex;
+}
+#title {
+  color: ghostwhite;
+  font-size: 75px;
+  font-family: "Russo One", sans-serif;
+  text-align: center;
+}
+#content .dynamic-text {
+  height: 35px;
+  line-height: 35px;
+  overflow: hidden;
+}
+#dynamic-text {
+  color: ghostwhite;
+  list-style: none;
+}
+#dynamic-text li {
+  list-style: none;
+  position: relative;
+  font-family: "Russo One", sans-serif;
+  font-size: 25px;
+  text-align: center;
+}
+#dynamic-text li span {
+  position: relative;
+}
+#dynamic-text li span::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+  background: black;
+  background-position: center center;
+  border-left: 2px solid ghostwhite;
+  animation: typing 1.5s steps(10) infinite;
+}
+@keyframes typing {
+  100% {
+    left: 100%;
+    margin: 0 -40px 0 40px;
+  }
+}
+#camera-orbit {
+  color: ghostwhite;
+  text-align: center;
+  padding-top: 10vh;
+  font-family: "Vollkorn", serif;
+  font-size: 22px;
+}
+.home-content {
+  height: 100vh;
+  padding-top: 25vh;
+}
+/* #endregion */
+
+/* #region  About section */
+section #about-content {
+  color: ghostwhite;
+  text-align: center;
+  width: 100%;
+  height: 100vh;
+  background-color: black
+}
+section #about-title {
+  font-size: 65px;
+  font-family: "Russo One", sans-serif;
+  padding-top: 12vh;
+}
+section #about-info {
+  font-size: 25px;
+  padding-left: 15vh;
+  padding-right: 15vh;
+  padding-top: 8vh;
+}
+/* #endregion */
+
+/* #region  Contact section */
+section .contact-content {
+  background-color: black;
+  color: ghostwhite;
+  text-align: center;
+  font-family: "Russo One", sans-serif;
+  width: 100%;
+  height: 110vh;
+  padding-left: 10vh;
+  padding-right: 10vh;
+}
+.column {
+  flex: 50%;
+}
+section #contact-title {
+  color: ghostwhite;
+  text-align: center;
+  padding-top: 10vh;
+  font-size: 60px;
+}
+section #column-title {
+  color: ghostwhite;
+  text-align: center;
+  padding-top: 6vh;
+  font-size: 40px;
+}
+section #column-info {
+  color: ghostwhite;
+  padding-top: 5vh;
+  padding-right: 5vh;
+  text-align: center;
+  font-size: 25px;
+}
+/* Style inputs with type="text", select elements and textareas */
+input[type="text"],
+select,
+textarea {
+  width: 100%; /* Full width */
+  font-size: 20px;
+  color: black;
+  padding: 12px; /* Some padding */
+  border: 1px solid #ccc; /* Gray border */
+  border-radius: 4px; /* Rounded borders */
+  box-sizing: border-box; /* Make sure that padding and width stays in place */
+  margin-top: 6px; /* Add a top margin */
+  margin-bottom: 16px; /* Bottom margin */
+  resize: vertical; /* Allow the user to vertically resize the textarea (not horizontally) */
+}
+#subject {
+  font-size: 18px;
+  color: black;
+  padding: 12px; /* Some padding */
+  border: 1px solid #ccc; /* Gray border */
+  border-radius: 4px; /* Rounded borders */
+  box-sizing: border-box; /* Make sure that padding and width stays in place */
+  margin-top: 6px; /* Add a top margin */
+  margin-bottom: 16px; /* Bottom margin */
+  resize: vertical; /* Allow the user to vertically resize the textarea (not horizontally) */
+  width: 100%; /* Full width */
+}
+
+/* Style the submit button with a specific background color etc */
+input[type="submit"] {
+  color: ghostwhite;
+  width: 250px;
+  height: 50px;
+  background-image: url("./images/moon.jpg");
+  background-size: cover;
+  align-content: center;
+  background-position: center center;
+  font-size: 25px;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+/* When moving the mouse over the submit button, add a darker green color */
+input[type="submit"]:hover {
+  opacity: 0.7;
+}
+.form-body {
+  padding-top: 5vh;
+}
+/* #endregion */
