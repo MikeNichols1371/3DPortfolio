@@ -279,7 +279,7 @@ const projectsTitleSectionCharacter = createFBX(projectsText, 'boss.fbx', 'dance
 //                                                                          3D TEXT
 /* #region  3D text */
 //                                           SKILLS
-//                                    TITLE SECTION    (scene, text content, rotateY, x, y, z, rotationY?)
+//                                    TITLE SECTION    (scene, text content, size, color, rotateY, x, y, z, rotationY?)
 const skillsTitleSection = createText(skillsText, 'Skills', 50, 0xffffff, -.6, -55, -25, 35, .05)
 
 //                                        PROJECTS
