@@ -139,7 +139,7 @@ header .number-nav-right {
 }
 .home-content {
   height: 100vh;
-  padding-top: 25vh;
+  padding-top: 30vh;
 }
 /* #endregion */
 
@@ -247,3 +247,4 @@ input[type="submit"]:hover {
   padding-top: 5vh;
 }
 /* #endregion */
+
