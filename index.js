@@ -7,19 +7,11 @@ import { FirstPersonControls } from './three.js-master/examples/jsm/controls/Fir
 import * as THREE from './three.js-master/build/three.module.js';
 import { OrbitControls } from './three.js-master/examples/jsm/controls/OrbitControls.js'
 import { DoubleSide} from './three.js-master/build/three.module.js';
-import { GUI } from './dat.gui';
 /* #endregion */
 var portalParticles = [];
 var rainDrops = 1500
 //                                                                   EVENT LISTENERS     
 /* #region  Event listers */
-// Event listeners
-
-
-
-
-/* #endregion */
-const gui = new GUI();
 //                                                                          SCENES
 /* #region  Scenes */
 //                                                      HOME
