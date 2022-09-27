@@ -5,19 +5,8 @@ import { TextGeometry } from './three.js-master/examples/jsm/geometries/TextGeom
 import { GLTFLoader } from './three.js-master/examples/jsm/loaders/GLTFLoader.js'
 import { FirstPersonControls } from './three.js-master/examples/jsm/controls/FirstPersonControls.js';
 import * as THREE from 'https://unpkg.com/three@0.144.0/build/three.module.js';
-import sunTexture from './images/sun.jpg';
-import mercuryTexture from './images/mercury.jpg';
-import venusTexture from './images/venus.jpg';
-import earthTexture from './images/globe.jpg';
-import moonTexture from './images/moon.jpg';
-import marsTexture from './images/mars.jpg';
-import jupiterTexture from './images/jupiter.jpg';
-import saturnTexture from './images/saturn.jpg';
-import saturnRingTexture from './images/saturnRing.jpg';
-import uranusTexture from './images/uranus.jpg';
-import neptuneTexture from './images/neptune.jpg';
 import { OrbitControls } from './three.js-master/examples/jsm/controls/OrbitControls.js'
-import { DoubleSide, TubeBufferGeometry } from './three.js-master/build/three.module.js';
+import { DoubleSide} from './three.js-master/build/three.module.js';
 /* #endregion */
 
 //                                                                   EVENT LISTENERS     
@@ -86,7 +75,7 @@ Create mesh for sphere assign sphere and import material from images */
 const sunSphere = new THREE.Mesh(
   new THREE.SphereGeometry(3.25, 50, 50),
   new THREE.MeshBasicMaterial({
-    map: new THREE.TextureLoader().load(sunTexture)
+    map: new THREE.TextureLoader().load('./images/sun.jpg')
   }));
 // Add to scene
 home.scene.add(sunSphere);
@@ -97,10 +86,10 @@ home.scene.add(sunSphere);
 /* #region  Planets */
 
 // Mercury
-const mercury = createPlanet(1, mercuryTexture, 4.95);
+const mercury = createPlanet(1, './images/mercury.jpg', 4.95);
 
 // Venus
-const venus = createPlanet(1.2, venusTexture, 6.95);
+const venus = createPlanet(1.2, './images/venus.jpg', 6.95);
 
 // /*        Earth
 // // Create sphere geometry (radius, width segments, height segments)
@@ -108,7 +97,7 @@ const venus = createPlanet(1.2, venusTexture, 6.95);
 const earthSphere = new THREE.Mesh(
   new THREE.SphereGeometry(2, 50, 50),
   new THREE.MeshStandardMaterial({
-    map: new THREE.TextureLoader().load(earthTexture)
+    map: new THREE.TextureLoader().load('./images/globe.jpg')
   }));
 // Create earth object 
 const earthObject = new THREE.Object3D();
@@ -125,7 +114,7 @@ home.scene.add(earthObject);
 const earthMoonSphere = new THREE.Mesh(
   new THREE.SphereGeometry(1.2, 50, 50),
   new THREE.MeshStandardMaterial({
-    map: new THREE.TextureLoader().load(moonTexture)
+    map: new THREE.TextureLoader().load('./images/moon.jpg')
   }));
 // Create moon object 
 const earthMoonObject = new THREE.Object3D();
@@ -138,23 +127,23 @@ earthMoonSphere.scale.set(0.45, 0.45, 0.45);
 earthSphere.add(earthMoonObject);
 
 // Mars
-const mars = createPlanet(1, marsTexture, 13.75);
+const mars = createPlanet(1, './images/mars.jpg', 13.75);
 
 // Jupiter
-const jupiter = createPlanet(2.5, jupiterTexture, 19);
+const jupiter = createPlanet(2.5, './images/jupiter.jpg', 19);
 
 // Saturn
-const saturn = createPlanet(2, saturnTexture, 24.5, {
+const saturn = createPlanet(2, './images/saturn.jpg', 24.5, {
   innerRadius: 2.2,
   outerRadius: 2.7,
-  texture: saturnRingTexture
+  texture: './images/saturnRing.jpg'
 });
 
 // Uranus
-const uranus = createPlanet(1.1, uranusTexture, 28.15);
+const uranus = createPlanet(1.1, './images/saturnRing.jpg', 28.15);
 
 // Neptune
-const neptune = createPlanet(1.1, neptuneTexture, 29.55);
+const neptune = createPlanet(1.1, './images/neptune.jpg', 29.55);
 
 
 /* #endregion */
