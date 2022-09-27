@@ -17,7 +17,7 @@ import saturnRingTexture from './images/saturnRing.jpg';
 import uranusTexture from './images/uranus.jpg';
 import neptuneTexture from './images/neptune.jpg';
 import { OrbitControls } from './three.js-master/examples/jsm/controls/OrbitControls.js'
-import { DoubleSide, TubeBufferGeometry } from 'three';
+import { DoubleSide, TubeBufferGeometry } from './three.js-master/build/three.module.js';
 /* #endregion */
 
 //                                                                   EVENT LISTENERS     
