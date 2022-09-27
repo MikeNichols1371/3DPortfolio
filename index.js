@@ -3,13 +3,11 @@ import { FBXLoader } from './three.js-master/examples/jsm/loaders/FBXLoader.js';
 import { FontLoader } from './three.js-master/examples/jsm/loaders/FontLoader.js';
 import { TextGeometry } from './three.js-master/examples/jsm/geometries/TextGeometry.js';
 import { GLTFLoader } from './three.js-master/examples/jsm/loaders/GLTFLoader.js'
-import { FirstPersonControls } from './three.js-master/examples/jsm/controls/FirstPersonControls.js';
 import * as THREE from './three.js-master/build/three.module.js';
 import { OrbitControls } from './three.js-master/examples/jsm/controls/OrbitControls.js'
 import { DoubleSide} from './three.js-master/build/three.module.js';
 /* #endregion */
 var portalParticles = [];
-var rainDrops = 1500
 //                                                                   EVENT LISTENERS     
 /* #region  Event listers */
 //                                                                          SCENES
@@ -43,13 +41,6 @@ projects.camera.position.set(0, 0, 1000); // Position camera back enough to see 
 var portalLight = new THREE.PointLight(0x062d89, 30, 500, 1.2);
 portalLight.position.set(0, 0, 250);
 projects.scene.add(portalLight);
-// const firstPersonControls = new FirstPersonControls(projects.camera, projects.canvasContainer);
-// firstPersonControls.constrainVertical = true;
-// firstPersonControls.movementSpeed = 8;
-// firstPersonControls.rollSpeed = 0;
-// firstPersonControls.heightMin = 1;
-// firstPersonControls.verticalMin = Math.PI / 1.7;
-// firstPersonControls.verticalMax = Math.PI / 2.3;
 
 
 /* #endregion */
