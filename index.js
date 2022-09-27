@@ -4,7 +4,7 @@ import { FontLoader } from './three.js-master/examples/jsm/loaders/FontLoader.js
 import { TextGeometry } from './three.js-master/examples/jsm/geometries/TextGeometry.js';
 import { GLTFLoader } from './three.js-master/examples/jsm/loaders/GLTFLoader.js'
 import { FirstPersonControls } from './three.js-master/examples/jsm/controls/FirstPersonControls.js';
-import * as THREE from 'https://unpkg.com/three@0.144.0/build/three.module.js';
+import * as THREE from './three.js-master/build/three.module.js';
 import { OrbitControls } from './three.js-master/examples/jsm/controls/OrbitControls.js'
 import { DoubleSide} from './three.js-master/build/three.module.js';
 /* #endregion */
