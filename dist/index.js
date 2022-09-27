@@ -251,14 +251,14 @@ const chessGame = createProject('chessGame.png', projects);
 chessGame.projectMesh.position.set(-380, 200, -740);
 chessGame.projectMesh.rotateY(.6);
 chessGame.projectMesh.name = 'Chess Game'
-chessGame.projectObject.userData = { URL: ''}
+chessGame.projectMesh.userData = { URL: ''}
 
 //                               3D PORTFOLIO
 const threeD = createProject('threeD.png', projects);
 threeD.projectMesh.position.set(-380, 160, -50);
 threeD.projectMesh.rotateY(.6);
 threeD.projectMesh.name = '3D'
-threeD.projectObject.userData = { URL: 'https://mikenichols1371.github.io/3DPortfolio/'}
+threeD.projectMesh.userData = { URL: 'https://mikenichols1371.github.io/3DPortfolio/'}
 
 //                             HIGH TECH LABS
 const highTechProject = createProject('highTechProject.png', projects);
