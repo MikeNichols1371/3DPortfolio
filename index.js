@@ -7,8 +7,10 @@ import { FirstPersonControls } from './three.js-master/examples/jsm/controls/Fir
 import * as THREE from './three.js-master/build/three.module.js';
 import { OrbitControls } from './three.js-master/examples/jsm/controls/OrbitControls.js'
 import { DoubleSide} from './three.js-master/build/three.module.js';
+import { GUI } from './dat.gui';
 /* #endregion */
-
+var portalParticles = [];
+var rainDrops = 1500
 //                                                                   EVENT LISTENERS     
 /* #region  Event listers */
 // Event listeners
@@ -17,7 +19,7 @@ import { DoubleSide} from './three.js-master/build/three.module.js';
 
 
 /* #endregion */
-
+const gui = new GUI();
 //                                                                          SCENES
 /* #region  Scenes */
 //                                                      HOME
@@ -29,38 +31,34 @@ home.camera.position.set(0, 12, 15); // Position camera back enough to see the s
 home.camera.rotation.set(-.8, 0, 0);
 
 //                                                      SKILLS
-const skills = createScene('skills');
-addOrbitControls(skills);
-const ambientLight = new THREE.AmbientLight(0xffffff, 1.8); // Create a ambient light and add to scene
-skills.scene.add(ambientLight);
+const skills = createFullScreenScene('skills');
+const directionalLight = new THREE.DirectionalLight(0xffffff, 18); // Create a directional light and add to scene
+skills.scene.add(directionalLight);
 skills.camera.position.set(-2, 0, 12); // Position camera back enough to see the sphere
-
-//                                                  SKILLS TITLE
-const skillsText = createScene('skills-text');
-const skillsTextCameraOrbit = new OrbitControls(skillsText.camera, skillsText.renderer.domElement); // Camera orbit more info @ https://threejs.org/docs/#examples/en/controls/OrbitControls
-skillsTextCameraOrbit.update();
-const directionalLight = new THREE.DirectionalLight(0xffffff, 16);
-skillsText.scene.add(directionalLight);
-skillsText.camera.position.set(40, 35, 300); // Position camera back enough to see the sphere
+const rectAreaLight = new THREE.RectAreaLight( 0xffffff, 10, 5, 5 );
+rectAreaLight.position.set(10, 4.2, 1.1)
+rectAreaLight.color.r = 1.1
+rectAreaLight.color.g = 1
+rectAreaLight.color.b = 1.5
+skills.scene.add(rectAreaLight);
 
 //                                                    PROJECTS
-const projects = createScene('projects');
-addOrbitControls(projects);
-projects.scene.add(ambientLight);
-projects.camera.position.set(2, 300, 500); // Position camera back enough to see the sphere
-const firstPersonControls = new FirstPersonControls(projects.camera, projects.canvasContainer);
-firstPersonControls.constrainVertical = true;
-firstPersonControls.movementSpeed = 8;
-firstPersonControls.rollSpeed = 0;
-firstPersonControls.heightMin = 1;
-firstPersonControls.verticalMin = Math.PI / 1.7;
-firstPersonControls.verticalMax = Math.PI / 2.3;
+const projects = createFullScreenScene('projects');
+const projectsDirectionalLight = new THREE.DirectionalLight(0xffffff, .3);
+projects.scene.add(projectsDirectionalLight);
+projectsDirectionalLight.position.set(0, 0, 1);
+projects.camera.position.set(0, 0, 1000); // Position camera back enough to see the sphere
+var portalLight = new THREE.PointLight(0x062d89, 30, 500, 1.2);
+portalLight.position.set(0, 0, 250);
+projects.scene.add(portalLight);
+// const firstPersonControls = new FirstPersonControls(projects.camera, projects.canvasContainer);
+// firstPersonControls.constrainVertical = true;
+// firstPersonControls.movementSpeed = 8;
+// firstPersonControls.rollSpeed = 0;
+// firstPersonControls.heightMin = 1;
+// firstPersonControls.verticalMin = Math.PI / 1.7;
+// firstPersonControls.verticalMax = Math.PI / 2.3;
 
-//                                              PROJECTS TITLE
-const projectsText = createScene('projects-text');
-projectsText.scene.add(ambientLight);
-projectsText.camera.position.set(120, 35, 300); // Position camera back enough to see the sphere
-projectsText.canvasContainer.addEventListener('resize', onWindowResize, false);
 
 /* #endregion */
 
@@ -177,126 +175,106 @@ home.scene.add(stars);
 /* #region  Skills books */
 //                              C SHARP BOOK
 const cSharpBook = createBook('cSharp.png', skills);
-cSharpBook.bookObject.position.set(-9, 2.5, 2);
+cSharpBook.bookObject.position.set(-15, 2.5, 2);
 cSharpBook.book.rotateY(.2);
 
 //                            JAVASCRIPT BOOK
 const jsBook = createBook('jsfront.png', skills);
-jsBook.bookObject.position.set(-9, -4.5, 2);
+jsBook.bookObject.position.set(-15, -4.5, 2);
 jsBook.book.rotateY(.2);
 
 //                               ASP.NET BOOK
 const aspBook = createBook('aspfront.png', skills);
-aspBook.bookObject.position.set(-4, 2.5, 1);
+aspBook.bookObject.position.set(-10, 2.5, 1);
 aspBook.book.rotateY(.2);
 
 //                              THREE JS BOOK
 const threeBook = createBook('threefront.png', skills);
-threeBook.bookObject.position.set(-4, -4.5, 1);
+threeBook.bookObject.position.set(-10, -4.5, 1);
 threeBook.book.rotateY(.2);
 
 //                                   SQL BOOK
 const sqlBook = createBook('sqlfront.png', skills);
-sqlBook.bookObject.position.set(1, 2.5, 0);
+sqlBook.bookObject.position.set(-5, 2.5, 0);
 sqlBook.book.rotateY(.2);
 
 //                                 UNITY BOOK
 const unityBook = createBook('unityfront.png', skills);
-unityBook.bookObject.position.set(1, -4.5, 0);
+unityBook.bookObject.position.set(-5, -4.5, 0);
 unityBook.book.rotateY(.2);
 
 //                                    CSS BOOK
 const cssBook = createBook('cssfront.png', skills);
-cssBook.bookObject.position.set(6, 2.5, -1);
+cssBook.bookObject.position.set(0, 2.5, -1);
 cssBook.book.rotateY(.2);
 
 //                                  HTML BOOK
 const htmlBook = createBook('htmlfront.png', skills);
-htmlBook.bookObject.position.set(6, -4.5, -1);
+htmlBook.bookObject.position.set(0, -4.5, -1);
 htmlBook.book.rotateY(.2);
 /* #endregion */
-
 //                                                                 PROJECTS MODELS
 
-/* #region  Floor */
-const floor = new THREE.Mesh(new THREE.PlaneGeometry(1500, 1500),
-  new THREE.MeshBasicMaterial({
-    map: new THREE.TextureLoader().load('./images/floor.jpg'), 
-    side: THREE.DoubleSide
-  }));
-floor.rotation.set(30, 0, 0)
-floor.position.set(0, -10, 0)
-const floorObject = new THREE.Object3D();
-floorObject.add(floor)
-floor.name = 'floor';
-console.log(floor.userData)
-projects.scene.add(floor);
-/* #endregion */
 
 /* #region  Project cards */
-// wwwwwww
 //                                     CHESS
 const chessGame = createProject('chessGame.png', projects);
-chessGame.projectMesh.position.set(-380, 200, -740);
-chessGame.projectMesh.rotateY(.6);
+chessGame.projectMesh.position.set(-1500, -500, 0);
 chessGame.projectMesh.name = 'Chess Game'
-chessGame.projectMesh.userData = { URL: ''}
+chessGame.projectMesh.userData = { URL: '', name: 'Chess Game'}
 
 //                               3D PORTFOLIO
 const threeD = createProject('threeD.png', projects);
-threeD.projectMesh.position.set(-380, 160, -50);
-threeD.projectMesh.rotateY(.6);
+threeD.projectMesh.position.set(-1500, 500, 0);
 threeD.projectMesh.name = '3D'
-threeD.projectMesh.userData = { URL: 'https://mikenichols1371.github.io/3DPortfolio/'}
+threeD.projectMesh.userData = { URL: 'https://mikenichols1371.github.io/3DPortfolio/', name: '3D'}
 
 //                             HIGH TECH LABS
 const highTechProject = createProject('highTechProject.png', projects);
-highTechProject.projectMesh.position.set(380, 160, -50);
-highTechProject.projectMesh.rotateY(-.6);
+highTechProject.projectMesh.position.set(1500, 500, 0);
 highTechProject.projectMesh.name = 'High Tech'
-highTechProject.projectMesh.userData = { URL: 'https://hightechlabs.azurewebsites.net/'};
+highTechProject.projectMesh.userData = { URL: 'https://hightechlabs.azurewebsites.net/', name: 'High Tech'};
 console.log(highTechProject.projectMesh)
 
 //                          REGULAR PORTFOLIO
 const regPortProject = createProject('regPortProject.png', projects);
-regPortProject.projectMesh.position.set(380, 200, -740);
-regPortProject.projectMesh.rotateY(-.6);
+regPortProject.projectMesh.position.set(1500, -500, 0);
 regPortProject.projectMesh.name = 'Regular Portfolio'
-regPortProject.projectMesh.userData = { URL: 'https://mikenichols1371.github.io/Portfolio-Website/'};
+regPortProject.projectMesh.userData = { URL: 'https://mikenichols1371.github.io/Portfolio-Website/', name: 'Regular Portfolio'};
 console.log(regPortProject.projectMesh)
 
 /* #endregion */
 
 //                                                                       FBX / GLB
 /* #region  FBX / GLB */
-//        Skills Title Section (scene, glb, scale, posX, posY, posZ rotateX, rotateY, rotationY)
-var beltGLB = createGLB(skillsText, 'belt.glb', 100, 25, 20, 35, 6, .05);
-//                                                                       (scene, fbxChar, fbxAnim, posX, posY, posZ, scale)
-const projectsTitleSectionCharacter = createFBX(projectsText, 'boss.fbx', 'dance1.fbx', 120, -40, 15, 1);
+
+var laptopGLB = createGLB(skills, 'laptop.glb', 2.2, 10, -1, 0, .5, -.6, 0);
+
 
 /* #endregion */
 
 //                                                                          3D TEXT
 /* #region  3D text */
 //                                           SKILLS
-//                                    TITLE SECTION    (scene, text content, size, color, rotateY, x, y, z, rotationY?)
-const skillsTitleSection = createText(skillsText, 'Skills', 50, 0xffffff, -.6, -55, -25, 35, .05)
+//                                    TITLE SECTION    (scene, text content, size, color, rotateY, x, y, z, rotateX?)
+const skillsTitleSection = createText(skills, 'Skills', 2, 0xffffff, 5.7, 16, -5, -15, .05, -.2);
 
 //                                        PROJECTS
 //                                      TITLE SECTION
-const projectsTitleSection = createText(projectsText, 'Projects', 60, 0xffffff, .6, 0, -220, 0);
-
-
-//                                          FRONT
-const threeDPortfolioTitle = createText(projects, '3D Portfolio Website Three.js', 22, 0xffffff, .6, -500, 50, 70)
-const highTechMVCTitle = createText(projects, 'High Tech Labs MVC', 22, 0xffffff, -.6, 260, 50, -100)
-
-//                                           BACK
-const chessGameTitle = createText(projects, 'Chess Game  Unity', 22, 0xffffff, .6, -460, 110, -570)
-const regularPortfolioTitle = createText(projects, 'Regular Portfolio Website', 22, 0xffffff, -.6, 200, 110, -700)
+const projectsPortal = particleSetUp(projects);
+const projectsTitle = createText(projects, 'Projects', 150, 0xffffff, 0, -380, -55, 150);
 
 //                                        DIRECTIONS
-const directionsText = createText(projects, 'Move Controls: WASD', 40, 0xffffff, 0, -300, 950, -1000)
+
+const directionsText2 = createText(projects, 'Click project to be redirected to its site', 40, 0xffffff, 0, -475, -850, 0)
+
+//                                            TOP
+const threeDPortfolioTitle = createText(projects, '3D Portfolio Website Three.js', 40, 0xffffff, 0, -1825, 150, 0)
+const highTechMVCTitle = createText(projects, 'High Tech Labs MVC', 40, 0xffffff, 0, 1250, 150, 0)
+
+//                                        BOTTOM
+const chessGameTitle = createText(projects, 'Chess Game  Unity', 40, 0xffffff, 0, -1700, -850, 0)
+const regularPortfolioTitle = createText(projects, 'Regular Portfolio Website', 40, 0xffffff, 0, 1150, -850, 0)
 
 /* #endregion */
 
@@ -324,8 +302,28 @@ function createScene(id) {
   return { scene, camera, renderer, canvasContainer }
 
 }
+function createFullScreenScene(id) {
 
-function createGLB(whatScene, whatGLB, scale, posX, posY, posZ, rotateX, rotateY, rotationY = 0) {
+  // Create a scene
+  const scene = new THREE.Scene();
+  // Create a container for canvas so i can use flex colums
+  const canvasContainer = document.querySelector(`#${id}-canvas-container`);
+  // Create a camera (field of view, aspect ratio, near clipping, far clipping)
+  const camera = new THREE.PerspectiveCamera(90, window.innerWidth / window.innerHeight, 0.1, 2000);
+  // Create a renderer   antialias helps smooth image
+  const renderer = new THREE.WebGLRenderer({
+    antialias: true,
+    // Apply canvas
+    canvas: document.querySelector(`#${id}-canvas`)
+  });
+  // Set renderer to full size of browser window 
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  // Set renderer pixel ratio to smooth image and add extra details
+  renderer.setPixelRatio(devicePixelRatio);
+  return { scene, camera, renderer, window }
+}
+
+function createGLB(whatScene, whatGLB, scale, posX, posY, posZ, rotateX, rotateY, rotateZ, rotationY = 0) {
   const glftLoader = new GLTFLoader();
   glftLoader.load(`./3d/${whatGLB}`, function (glb) {
     whatScene.scene.add(glb.scene);
@@ -333,7 +331,6 @@ function createGLB(whatScene, whatGLB, scale, posX, posY, posZ, rotateX, rotateY
     glb.scene.scale.set(scale, scale, scale);
     glb.scene.rotateX(rotateX);
     glb.scene.rotateY(rotateY);
-    glb.scene.rotateY = rotateY;
   })
 }
 const clock = new THREE.Clock(true);
@@ -380,22 +377,22 @@ function animate() {
   /* #region  Renderers */
   home.renderer.render(home.scene, home.camera);
   skills.renderer.render(skills.scene, skills.camera);
-  skillsText.renderer.render(skillsText.scene, skillsText.camera);
   projects.renderer.render(projects.scene, projects.camera);
-  projectsText.renderer.render(projectsText.scene, projectsText.camera);
   /* #endregion */
 
-  // raycast.setFromCamera(moveMouse, projects.camera);
-  // const intersects = raycast.intersectObjects(clickableLinks);
   onWindowResize(home);
-  onWindowResize(skills);
-  onWindowResize(skillsText);
-  onWindowResize(projects);
-  onWindowResize(projectsText);
-  firstPersonControls.update(.3);
+  onWindowResizeFullScreen(skills);
+  onWindowResizeFullScreen(projects);
   const delta = clock.getDelta();
   if (mixer) mixer.update(delta);
-  requestAnimationFrame(raycast)
+  requestAnimationFrame(raycast);
+
+  portalParticles.forEach(p => {
+    p.rotation.z -= delta * 1.5;
+  })
+  if(Math.random() > 0.9) {
+    portalLight.power = 350 + Math.random() * 500;
+  }
 }
 // // Create Planets
 function createPlanet(size, texture, position, ring) {
@@ -439,9 +436,8 @@ function textLoad() {
       }, delay += 2000);
     }
 }
-
 //                                                          CREATE TEXT
-function createText(whatScene, textContent, size, color, rotateY, posX, posY, posZ, rotationY = 0) {
+function createText(whatScene, textContent, size, color, rotateY, posX, posY, posZ, rotateX = 0, rotateZ = 0) {
   const textLoader = new FontLoader();
   textLoader.load('./fonts/Oswald_Bold.json', function (font) {
     const textGeometry = new TextGeometry(textContent, {
@@ -462,8 +458,9 @@ function createText(whatScene, textContent, size, color, rotateY, posX, posY, po
         color: color
       })
     ]);
-    textMesh.rotateY(rotateY)
-    textMesh.rotation.y += rotationY;
+    textMesh.rotateY(rotateY);
+    textMesh.rotateX(rotateX);
+    textMesh.rotateZ(rotateZ);
     textMesh.position.set(posX, posY, posZ);
     whatScene.scene.add(textMesh);
   })
@@ -495,10 +492,11 @@ function createBook(image, whatScene) {
 }
 function addOrbitControls(whatScene) {
   const cameraOrbit = new OrbitControls(whatScene.camera, whatScene.renderer.domElement); // Camera orbit more info @ https://threejs.org/docs/#examples/en/controls/OrbitControls
+  cameraOrbit.enableZoom = false;
   cameraOrbit.update();
 }
 function createProject(image, whatScene) {
-  const projectBox = new THREE.PlaneGeometry(10, 7 );
+  const projectBox = new THREE.PlaneGeometry(10, 6 );
   const projectMaterial = new THREE.MeshBasicMaterial({
     map: new THREE.TextureLoader().load(`./images/${image}`),
     side: DoubleSide
@@ -506,7 +504,7 @@ function createProject(image, whatScene) {
   const projectMesh = new THREE.Mesh(projectBox, projectMaterial);
   const projectObject = new THREE.Object3D();
   projectObject.add(projectMesh);
-  projectMesh.scale.set(25, 25, 25);
+  projectMesh.scale.set(75, 75, 75);
   whatScene.scene.add(projectMesh);
   return { projectMesh, projectObject };
 }
@@ -515,11 +513,12 @@ function onWindowResize(whatScene) {
   whatScene.camera.updateProjectionMatrix();
   whatScene.renderer.setSize(whatScene.canvasContainer.offsetWidth, whatScene.canvasContainer.offsetHeight);
 }
+function onWindowResizeFullScreen(whatScene) {
+  whatScene.camera.aspect = whatScene.window.innerWidth / whatScene.window.innerHeight;
+  whatScene.camera.updateProjectionMatrix();
+  whatScene.renderer.setSize(whatScene.window.innerWidth, whatScene.window.innerHeight);
+}
 /* #endregion */
-
-
-
-
 
 animate();
 textLoad();
@@ -528,8 +527,8 @@ const raycaster = new THREE.Raycaster();
 const pointer = new THREE.Vector2();
 
 function onPointerMove( event ) {
-	pointer.x = ( event.offsetX / projects.canvasContainer.offsetWidth ) * 2 - 1;
-	pointer.y = - ( event.offsetY / projects.canvasContainer.offsetHeight ) * 2 + 1;
+	pointer.x = ( event.clientX / projects.window.innerWidth ) * 2 - 1;
+	pointer.y = - ( event.clientY / projects.window.innerHeight ) * 2 + 1;
 }
 function raycast() {
 
@@ -540,17 +539,50 @@ function raycast() {
 	const intersects = raycaster.intersectObjects( projects.scene.children, true );
   
 	for ( let i = 0; i < intersects.length; i ++ ) {
-    if(intersects[i].object.userData.URL)
-
-		// console.log(intersects[ i].children)
-    // console.log(intersects[i].object)
+    if(intersects[i].object.userData.URL && intersects[i].object.userData.name){
     window.open(intersects[i].object.userData.URL)
-   
+    
 	}
-  
-	
-
-}
+}};
 window.addEventListener( 'click', onPointerMove );
-console.log(projects.scene.children)
 
+function particleSetUp(whatScene) {
+  var portalLoader = new THREE.TextureLoader();
+  portalLoader.load('./images/smoke.png', function (texture) {
+    var portalGeometry = new THREE.PlaneGeometry(350, 350);
+    var portalMaterial = new THREE.MeshLambertMaterial({
+      map: texture,
+      transparent: true
+    });
+    var smokeGeometry = new THREE.PlaneGeometry(800, 800);
+    var smokeMaterial = new THREE.MeshLambertMaterial({
+      map: texture,
+      transparent: true
+    });
+    for (var p = 880; p > 250;  p--) {
+    var portal = new THREE.Mesh(portalGeometry, portalMaterial);
+    portal.position.set(
+      0.5 * p * Math.cos((4 * p * Math.PI) / 180),
+      0.5 * p * Math.sin((4 * p * Math.PI) / 180),
+      0.1 * p
+    )
+    portal.rotation.z = Math.random() * 360;
+    portalParticles.push(portal);
+    whatScene.scene.add(portal);
+    }
+    for (var p = 0; p < 40;  p++) {
+      var portal = new THREE.Mesh(smokeGeometry, smokeMaterial);
+      portal.position.set(
+        Math.random() * 1000-600,
+        Math.random() * 400-200,
+        25
+      )
+      portal.rotation.z = Math.random() * 360;
+      portal.material.opacity = .4;
+      portalParticles.push(portal);
+      whatScene.scene.add(portal);
+      }
+  })
+};
+
+console.log(projects.scene)
