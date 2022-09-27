@@ -188,42 +188,42 @@ home.scene.add(stars);
 /* #region  Skills books */
 //                              C SHARP BOOK
 const cSharpBook = createBook('cSharp.png', skills);
-cSharpBook.bookObject.position.set(6, 2.5, -1);
+cSharpBook.bookObject.position.set(-9, 2.5, 2);
 cSharpBook.book.rotateY(.2);
 
 //                            JAVASCRIPT BOOK
 const jsBook = createBook('jsfront.png', skills);
-jsBook.bookObject.position.set(6, -4.5, -1);
+jsBook.bookObject.position.set(-9, -4.5, 2);
 jsBook.book.rotateY(.2);
 
 //                               ASP.NET BOOK
 const aspBook = createBook('aspfront.png', skills);
-aspBook.bookObject.position.set(1, 2.5, 0);
+aspBook.bookObject.position.set(-4, 2.5, 1);
 aspBook.book.rotateY(.2);
 
 //                              THREE JS BOOK
 const threeBook = createBook('threefront.png', skills);
-threeBook.bookObject.position.set(1, -4.5, 0);
+threeBook.bookObject.position.set(-4, -4.5, 1);
 threeBook.book.rotateY(.2);
 
 //                                   SQL BOOK
 const sqlBook = createBook('sqlfront.png', skills);
-sqlBook.bookObject.position.set(-4, 2.5, 1);
+sqlBook.bookObject.position.set(1, 2.5, 0);
 sqlBook.book.rotateY(.2);
 
 //                                 UNITY BOOK
 const unityBook = createBook('unityfront.png', skills);
-unityBook.bookObject.position.set(-4, -4.5, 1);
+unityBook.bookObject.position.set(1, -4.5, 0);
 unityBook.book.rotateY(.2);
 
 //                                    CSS BOOK
 const cssBook = createBook('cssfront.png', skills);
-cssBook.bookObject.position.set(-9, 2.5, 2);
+cssBook.bookObject.position.set(6, 2.5, -1);
 cssBook.book.rotateY(.2);
 
 //                                  HTML BOOK
 const htmlBook = createBook('htmlfront.png', skills);
-htmlBook.bookObject.position.set(-9, -4.5, 2);
+htmlBook.bookObject.position.set(6, -4.5, -1);
 htmlBook.book.rotateY(.2);
 /* #endregion */
 
