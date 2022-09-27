@@ -258,14 +258,14 @@ const threeD = createProject('threeD.png', projects);
 threeD.projectMesh.position.set(-380, 160, -50);
 threeD.projectMesh.rotateY(.6);
 threeD.projectMesh.name = '3D'
-threeD.projectObject.userData = { URL: ''}
+threeD.projectObject.userData = { URL: 'https://mikenichols1371.github.io/3DPortfolio/'}
 
 //                             HIGH TECH LABS
 const highTechProject = createProject('highTechProject.png', projects);
 highTechProject.projectMesh.position.set(380, 160, -50);
 highTechProject.projectMesh.rotateY(-.6);
 highTechProject.projectMesh.name = 'High Tech'
-highTechProject.projectMesh.userData = { URL: 'https://hightechlabs.azurewebsites.net/', clickableLinks: true};
+highTechProject.projectMesh.userData = { URL: 'https://hightechlabs.azurewebsites.net/'};
 console.log(highTechProject.projectMesh)
 
 //                          REGULAR PORTFOLIO
@@ -273,7 +273,7 @@ const regPortProject = createProject('regPortProject.png', projects);
 regPortProject.projectMesh.position.set(380, 200, -740);
 regPortProject.projectMesh.rotateY(-.6);
 regPortProject.projectMesh.name = 'Regular Portfolio'
-regPortProject.projectMesh.userData = { URL: 'https://mikenichols1371.github.io/Portfolio-Website/', clickableLinks: true};
+regPortProject.projectMesh.userData = { URL: 'https://mikenichols1371.github.io/Portfolio-Website/'};
 console.log(regPortProject.projectMesh)
 
 /* #endregion */
